@@ -3,10 +3,10 @@
 
 ## Using Tech
 
-React.js 
-JavaScript
-Tailwind CSS
-HTML5
+React.js  
+JavaScript  
+Tailwind CSS  
+HTML5  
 
 ## Project Start
 

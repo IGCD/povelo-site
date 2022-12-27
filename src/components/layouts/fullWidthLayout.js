@@ -6,3 +6,4 @@ export const FullWidthLayout = ({title, children}) => {
             <div className="relative">{children}</div>
         </div>
     )
+}

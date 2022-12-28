@@ -65,8 +65,9 @@ export const PostEditer = () => {
         []
     );
     return (
-        <div className="post-editer">
+        <div className="post-editer h-screen" style={{height:"calc(100vh - 400px)"}}>
             <ReactQuill
+                className="w-full h-full"
                 ref={(element) => {
                     if (element !== null) {
                         quillRef.current = element;

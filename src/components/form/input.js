@@ -3,8 +3,8 @@ import { forwardRef } from "react";
 export const TextInput = forwardRef((props, ref) => {
     return (
         <div className="relative w-full mt-5">
-            <input type="text" ref={ref} className="w-full rounded-sm"/>
-            <label className="absolute -top-1.5 left-3 bg-white">{props.label}</label>
+            <input type="text" ref={ref} className="w-full border-gray-300 rounded-sm"/>
+            <label className="absolute -top-1.5 left-3 bg-white text-gray-500">{props.label}</label>
         </div>
     )
 })
@@ -12,8 +12,8 @@ export const TextInput = forwardRef((props, ref) => {
 export const PasswordInput = forwardRef((props, ref) => {
     return (
         <div className="relative w-full mt-5">
-            <input type="password" ref={ref} autoComplete="false" className="w-full border-black rounded-sm"/>
-            <label className="absolute -top-1.5 left-3 bg-white">{props.label}</label>
+            <input type="password" ref={ref} autoComplete="false" className="w-full border-gray-300 rounded-sm"/>
+            <label className="absolute -top-1.5 left-3 bg-white text-gray-500">{props.label}</label>
         </div>
     )
 })

@@ -3,9 +3,11 @@ import Main from "pages/main";
 import { Header } from 'components/header';
 import { NotFound } from 'pages/notfound';
 import Post from 'pages/post';
-import 'styles/globals.css';
 import Login from 'pages/login';
+import 'styles/globals.css';
+
 function App() {
+
   return (
     <div className="App">
       <BrowserRouter>

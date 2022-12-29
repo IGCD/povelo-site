@@ -4,7 +4,9 @@ const Post = () => {
     return (
         <div className="container">
             <h2 className="mb-5 text-2xl font-semibold">글쓰기</h2>
-            <PostEditer/>
+            <from className="w-full">
+                <PostEditer/>
+            </from>
         </div>
     )
 }

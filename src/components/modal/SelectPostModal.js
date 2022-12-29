@@ -1,4 +1,5 @@
 import { useEffect } from "react"
+import { Link } from "react-router-dom";
 
 export const SelectPostModal = ({setModal}) => {
     useEffect(()=>{
@@ -14,7 +15,7 @@ export const SelectPostModal = ({setModal}) => {
                 <div className="flex">
                     <button className="pt-3 pb-3 pr-10 pl-10 mr-8 bg-black text-white rounded-full">포트폴리오</button>
                     <button className="pt-3 pb-3 pr-10 pl-10 mr-8 bg-black text-white rounded-full">프로젝트</button>
-                    <button className="pt-3 pb-3 pr-10 pl-10 bg-black text-white rounded-full">게시글</button>
+                    <Link onClick={()=>{setModal(prev => !prev)}} to="post"><button className="pt-3 pb-3 pr-10 pl-10 bg-black text-white rounded-full">게시글</button></Link>
                 </div>
                 <div className="mt-10" onClick={()=>{setModal(prev => !prev)}}>닫기</div>
             </div>

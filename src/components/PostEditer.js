@@ -21,7 +21,6 @@ export const PostEditer = forwardRef((props, ref) => {
 
         input.setAttribute("type", "file");
         input.setAttribute("accept", "image/*");
-        input.click();
 
         input.onchange = async () => {
             const file = input.files;

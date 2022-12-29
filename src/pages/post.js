@@ -1,3 +1,4 @@
+import axios from "axios";
 import { memo, useCallback, useRef } from "react"
 import { PostEditer } from "../components/PostEditer";
 const Post = () => {
@@ -6,6 +7,7 @@ const Post = () => {
     const submitHandler = useCallback(() => {
         if(quillRef.current) {
             console.log(quillRef.current.value);
+            //axios.post()
         }
     }, [])
     return (

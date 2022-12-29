@@ -3,7 +3,7 @@ import { PasswordInput, SubmitButton, TextInput } from "components/form/input";
 import { projectName } from "const/projectInfo";
 import { memo, useRef } from "react"
 import { Link } from "react-router-dom";
-
+import { getHmacSHA256 } from "utils/crypto";
 
 const SocialLoginButton = ({url, label}) => {
     return (
@@ -39,8 +39,14 @@ const Login = () => {
         e.preventDefault();
 
         if(idRef.current && pwRef.current) {
-            const URL = "signin";
-            axios.post()
+            const URL = process.env.REACT_APP_API_URL + "login";
+            
+            const submitData = {
+                userId : idRef.current.value,
+                userPw : getHmacSHA256(pwRef.current.value),
+            }
+            console.log(submitData);
+            axios.post(URL, submitData)
             .then(res => {
                 console.log(res.data);
             })

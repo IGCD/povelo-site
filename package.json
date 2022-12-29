@@ -2,6 +2,8 @@
   "name": "pfblog",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://povelo.ksrpn.com",
+  "type": "module",
   "dependencies": {
     "@tailwindcss/forms": "^0.5.3",
     "@testing-library/jest-dom": "^5.16.5",
@@ -19,10 +21,10 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "export PORT=4000 && react-scripts start",
+    "build": "export PORT=4000 && react-scripts build",
+    "test": "export PORT=4000 && react-scripts test",
+    "eject": "export PORT=4000 && react-scripts eject"
   },
   "eslintConfig": {
     "extends": [

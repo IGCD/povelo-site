@@ -1,4 +1,4 @@
-import { memo, useCallback, useMemo, useRef } from "react"
+import { memo, useCallback, useRef } from "react"
 import { PostEditer } from "../components/PostEditer";
 const Post = () => {
     const quillRef = useRef();

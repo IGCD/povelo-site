@@ -48,7 +48,7 @@ export const PostEditer = forwardRef((props, ref) => {
                 }
             }
         };
-    }, []);
+    }, [ref]);
 
     const modules = useMemo(() => ({
         ImageResize: {
@@ -76,7 +76,7 @@ export const PostEditer = forwardRef((props, ref) => {
                 image: imageHandler,
             },
         },
-    }), []);
+    }), [imageHandler]);
     return (
         <div className="post-editer h-screen" style={{ height: "calc(100vh - 400px)" }}>
             <ReactQuill

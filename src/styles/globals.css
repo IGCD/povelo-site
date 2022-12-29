@@ -44,7 +44,14 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+
 .container {
 	padding : 5rem;
+	margin : 0 auto;
+}
+
+.ql-editor .ql-video {
+	width : 80%;
+	height : 400px;
 	margin : 0 auto;
 }

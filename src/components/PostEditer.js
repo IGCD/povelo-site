@@ -1,14 +1,20 @@
 import axios from "axios";
-import { useMemo, useRef, useState } from "react";
+import { forwardRef, useMemo, useState } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { isEmpty } from "utils/isEmpty";
 
-export const PostEditer = () => {
-    const [contents, setContents] = useState("");
-    const quillRef = useRef();
+// Image Resize Module
+import Quill from "quill";
+import VideoResize from 'quill-video-resize-module2';
+import ImageResize from "quill-image-resize-module-react";
 
-    const imageHandler = () => {
+Quill.register('modules/ImageResize', ImageResize);
+Quill.register('modules/VideoResize', VideoResize);
+export const PostEditer = forwardRef((props, ref) => {
+    const [contents, setContents] = useState("");
+
+    const imageHandler = useMemo(() => {
         const input = document.createElement("input");
         const formData = new FormData();
         let url = "";
@@ -23,13 +29,14 @@ export const PostEditer = () => {
                 formData.append("image", file[0]);
 
                 try {
-                    const res = axios.get();
+                    const res = axios.get("https://reqres.in/api/users/2");
 
-                    url = res.data.url;
+                    //url = res.data.url;
+                    url = "https://images.unsplash.com/photo-1664574654529-b60630f33fdb";
 
-                    const range = quillRef.current?.getEditor().getSelection()?.index;
+                    const range = ref.current?.getEditor().getSelection()?.index;
                     if (!isEmpty(range)) {
-                        let quill = quillRef.current?.getEditor();
+                        let quill = ref.current?.getEditor();
                         quill?.setSelection(range, 1);
                         quill?.clipboard.dangerouslyPasteHTML(range, `<img src=${url} alt="이미지 태그가 삽입됩니다." />`);
                     }
@@ -41,44 +48,50 @@ export const PostEditer = () => {
                 }
             }
         };
-    };
-    const modules = useMemo(
-        () => ({
-            toolbar: {
-                container: [
-                    ["bold", "italic", "underline", "strike", "blockquote"],
-                    [{ size: ["small", false, "large", "huge"] }, { color: [] }],
-                    [
-                        { list: "ordered" },
-                        { list: "bullet" },
-                        { indent: "-1" },
-                        { indent: "+1" },
-                        { align: [] },
-                    ],
-                    ["image", "video"],
+    }, []);
+
+    const modules = useMemo(() => ({
+        ImageResize: {
+            parchment: Quill.import('parchment')
+        },
+
+        VideoResize: {
+            parchment: Quill.import('parchment'),
+            modules: ["Resize", "DisplaySize", "Toolbar"]
+        },
+        toolbar: {
+            container: [
+                ["bold", "italic", "underline", "strike", "blockquote"],
+                [{ size: ["small", false, "large", "huge"] }, { color: [] }],
+                [
+                    { list: "ordered" },
+                    { list: "bullet" },
+                    { indent: "-1" },
+                    { indent: "+1" },
+                    { align: [] },
                 ],
-                handlers: {
-                    image: imageHandler,
-                },
+                ["image", "video"],
+            ],
+            handlers: {
+                image: imageHandler,
             },
-        }),
-        []
-    );
+        },
+    }), []);
     return (
-        <div className="post-editer h-screen" style={{height:"calc(100vh - 400px)"}}>
+        <div className="post-editer h-screen" style={{ height: "calc(100vh - 400px)" }}>
             <ReactQuill
                 className="w-full h-full"
                 ref={(element) => {
                     if (element !== null) {
-                        quillRef.current = element;
+                        ref.current = element;
                     }
                 }}
                 value={contents}
                 onChange={setContents}
                 modules={modules}
-                //theme="snow"
+                theme="snow"
                 placeholder="내용을 입력해주세요."
             />
         </div>
     )
-}
+});

@@ -1,10 +1,18 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { BsXLg } from 'react-icons/bs';
 export const TopBanner = () => {
-    const [show, setShow] = useState(true);
+    const [show, setShow] = useState(false);
+    const [view, setView] = useState(true);
+
+    useEffect(()=>{
+        if(!show) {
+            setTimeout(()=>{setView(prev => !prev)}, 1100)
+        }
+        return () => {}
+    }, [show])
     return (
         <div 
-            className="absolute whitespace-nowrap flex top-3 left-2/4 h-14 pr-10 pl-10 bg-gray-700 rounded-full z-10 shadow-lg max-md:hidden" 
+            className={`absolute whitespace-nowrap flex top-3 left-2/4 h-14 pr-10 pl-10 bg-gray-700 rounded-full z-10 shadow-lg ${!view ? "hidden" : ""} max-md:hidden`}
             style={show ? {transition : "1s", transform : "translateY(0%) translateX(-50%)"} : {transition : "1s", transform : "translateY(-5rem)  translateX(-50%)"}}>
 
             <div className=' relative w-full h-full flex justify-between items-center text-white m-auto'>

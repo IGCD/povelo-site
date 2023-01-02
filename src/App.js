@@ -10,7 +10,7 @@ import Register from 'pages/register';
 function App() {
 
   return (
-    <div className="App">
+    <div className="App w-0">
       <BrowserRouter>
         <Header/>
         <Routes>

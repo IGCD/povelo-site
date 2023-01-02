@@ -107,11 +107,11 @@ export const PostList = () => {
 
     return (
         <>
-            {direction !== 0 ? <div className='absolute w-12 h-12 top-36 -left-6 bg-gray-100 border-gray-900 flex justify-center items-center rounded-full shadow-xl'><IoIosArrowBack/></div> : <></>}
+            {direction !== 0 ? <div className='absolute w-12 h-12 top-1/2 -left-6 bg-gray-100 border-gray-900 flex justify-center items-center rounded-full shadow-xl z-10 -translate-y-1/2'><IoIosArrowBack/></div> : <></>}
             <div ref={(node) => {scrollRef.current = node}} className="w-full overflow-y-hidden scrollbar-hide shadow-inner">
                 <div className="flex relative">{tmpList.slice(0, 10).map((data, index) => <PostItem key={index} url={tmpImageList[data]}/>)}</div>
             </div>
-            {direction !== 2 ? <div className='absolute w-12 h-12 top-36 -right-6 bg-gray-100 border-gray-900 flex justify-center items-center rounded-full shadow-xl'><IoIosArrowForward/></div> : <></>}
+            {direction !== 2 ? <div className='absolute w-12 h-12 top-1/2 -right-6 bg-gray-100 border-gray-900 flex justify-center items-center rounded-full shadow-xl z-10 -translate-y-1/2'><IoIosArrowForward/></div> : <></>}
         </>
     )
 }

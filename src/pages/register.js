@@ -1,8 +1,10 @@
 import axios from "axios";
 import { PasswordInput, SubmitButton, TextInput } from "components/form/input";
 import { useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
+    const navigate = useNavigate();
     const idRef = useRef(null);
     const [idStatus, setIdStatus] = useState(true);
 
@@ -51,15 +53,17 @@ const Register = () => {
                 const formatData = {
                     email : idRef.current.value,
                     password : pwRef.current.value,
-                    phoneNumber : numberRef.current.value,
+                    phoneNumber : numberRef.current.value.replaceAll("-", ""),
                 }
-                //axios.post(process.env.REACT_APP_API_URL + "regist", formatData)
-                //.then(res => {
-                //     console.log(res.data);
-                // })
-                // .catch(err => {
-                //     console.log(err);
-                // })
+                axios.post(process.env.REACT_APP_API_BASE_URL + "auth/regist", formatData)
+                .then(res => {
+                    alert("회원가입이 완료되었습니다.");
+                    console.log(res);
+                    navigate("/");
+                })
+                .catch(err => {
+                    alert(err.response.data.message);
+                })
             }
             else {
                 alert("포멧 안맞으니까 고치세요");

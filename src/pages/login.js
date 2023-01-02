@@ -5,7 +5,6 @@ import { projectName } from "const/projectInfo";
 import { memo, useRef } from "react"
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { getHmacSHA256 } from "utils/crypto";
 
 const SocialLoginButton = ({url, label}) => {
     return (
@@ -42,7 +41,7 @@ const Login = () => {
         e.preventDefault();
 
         if(idRef.current && pwRef.current) {
-            const URL = process.env.REACT_APP_API_URL + "login";
+            const URL = process.env.REACT_APP_API_BASE_URL + "auth/login";
             console.log(URL);
             const submitData = {
                 email : idRef.current.value,
@@ -50,14 +49,13 @@ const Login = () => {
             }
             console.log(submitData);
 
-            //axios.get(process.env.REACT_APP_API_URL + "login")
             axios.post(URL, submitData)
             .then(res => {
-                //loginProcess(res.data);
-                console.log(res.data);
+                loginProcess(res.data);
                 navigate("/");
             })
             .catch(err =>{
+                console.log(err.response?.data?.message);
                 console.log("catch",err);
             })
         }

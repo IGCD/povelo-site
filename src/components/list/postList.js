@@ -18,7 +18,7 @@ export const PostItem = ({url}) => {
 
     return (
         <div className=" mr-3 last:mr-0">
-            <div className="w-80 max-md:w-full">
+            <div className="w-80 max-md:w-auto">
                 <Image 
                     classStyle="w-full h-full object-cover rounded-lg" 
                     src={url + getParametersForUnsplash(640, 640, 50, "jpg")} 

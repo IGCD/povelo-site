@@ -1,8 +1,9 @@
 import { loginProcess } from "api/loginAPI";
+import { LoginContext } from "App";
 import axios from "axios";
 import { PasswordInput, SubmitButton, TextInput } from "components/form/input";
 import { projectName } from "const/projectInfo";
-import { memo, useRef } from "react"
+import { memo, useContext, useRef } from "react"
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
@@ -16,6 +17,7 @@ const SocialLoginButton = ({url, label}) => {
 }
 const Login = () => {
     const navigate = useNavigate();
+    const context = useContext(LoginContext);
     const idRef = useRef(null);
     const pwRef = useRef(null);
     
@@ -51,8 +53,7 @@ const Login = () => {
 
             axios.post(URL, submitData)
             .then(res => {
-                loginProcess(res.data);
-                console.log(res.data);
+                loginProcess(res.data, context);
                 navigate("/");
             })
             .catch(err =>{

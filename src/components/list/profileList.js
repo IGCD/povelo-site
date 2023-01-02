@@ -3,7 +3,7 @@ import { getParametersForUnsplash } from "utils/unsplash"
 
 const ProfileItem = ({props}) => {
     return (
-        <div className="relative mr-5 last:mr-0 w-96 h-96 overflow-hidden rounded-lg bg-white shadow-xl border-gray-500 min-w-[200px] max-h-[300px]">
+        <div className="relative mr-5 last:mr-0 w-96 h-96 max-md:h-[18rem] overflow-hidden rounded-lg bg-white shadow-xl border-gray-500 min-w-[200px]">
             <Image 
                 classStyle={"w-full h-50"} 
                 src={props.thumbnail + getParametersForUnsplash(480, 320, 50, "jpg")}
@@ -11,7 +11,7 @@ const ProfileItem = ({props}) => {
             />
             <Image 
                 classStyle={"absolute w-30 h-30 rounded-full left-1/2 -translate-x-1/2  -translate-y-1/2 border-2"}
-                src={props.profileImage + getParametersForUnsplash(80, 80, 50, "jpg")}
+                src={props.profileImage + getParametersForUnsplash(60, 60, 50, "jpg")}
                 lazySrc={props.profileImage + getParametersForUnsplash(10, 10, 1, "jpg")}
             />
             <div className="relative pt-10 text-center">

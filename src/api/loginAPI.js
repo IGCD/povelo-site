@@ -1,20 +1,16 @@
+import axios from "axios";
+
 export const isLogin = () => {
-    const login = sessionStorage.getItem(process.env.REACT_APP_LOGIN_STORAGE);
-    if(login) {
-        return login;
-    }
-    else {
-        return false;
-    }
-    
+    const login = axios.defaults.headers.common["Authorization"];
+    return login ? true : false;
 }
 
-
-export const loginProcess = (response) => {
+export const loginProcess = (response, context) => {
     const login = isLogin();
     if(!login) {
-        sessionStorage.setItem(process.env.REACT_APP_LOGIN_STORAGE, response);
-        
+        axios.defaults.headers.common["Authorization"] = `Bearer ${response?.access_token}`;
+        context.setLogin(true);
+        //sessionStorage.setItem(process.env.REACT_APP_LOGIN_STORAGE, response?.access_token);
     }
     else {
         alert("Already Login !");
@@ -22,7 +18,8 @@ export const loginProcess = (response) => {
 }
 
 
-export const logoutProcess = () => {
-    sessionStorage.removeItem(process.env.REACT_APP_LOGIN_STORAGE);
-    window.location.href = "/";
+export const logoutProcess = (context, navigate) => {
+    axios.defaults.headers.common["Authorization"] = undefined;
+    context.setLogin(false);
+    navigate("/");
 }

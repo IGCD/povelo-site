@@ -6,22 +6,26 @@ import Post from 'pages/post';
 import Login from 'pages/login';
 import 'styles/globals.css';
 import Register from 'pages/register';
+import { createContext, useState } from 'react';
 
+export const LoginContext = createContext({login:false, setLogin:()=>{}})
 function App() {
-
+  const [login, setLogin] = useState(false);
   return (
-    <div className="App">
-      <BrowserRouter>
-        <Header/>
-        <Routes>
-          <Route path="/" element={<Main />}></Route>
-          <Route path="/login" element={<Login />}></Route>
-          <Route path="/register" element={<Register />}></Route>
-          <Route path="/post" element={<Post />}></Route>
-          <Route path="*" element={<NotFound/>}></Route>
-        </Routes>
-      </BrowserRouter>
-    </div>
+    <LoginContext.Provider value={{login:login, setLogin:setLogin}}>
+      <div className="App">
+        <BrowserRouter>
+          <Header />
+          <Routes>
+            <Route path="/" element={<Main />}></Route>
+            <Route path="/login" element={<Login />}></Route>
+            <Route path="/register" element={<Register />}></Route>
+            <Route path="/post" element={<Post />}></Route>
+            <Route path="*" element={<NotFound />}></Route>
+          </Routes>
+        </BrowserRouter>
+      </div>
+    </LoginContext.Provider>
   );
 }
 

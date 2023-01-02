@@ -14,6 +14,7 @@ export const loginProcess = (response) => {
     const login = isLogin();
     if(!login) {
         sessionStorage.setItem(process.env.REACT_APP_LOGIN_STORAGE, response);
+        
     }
     else {
         alert("Already Login !");

@@ -52,6 +52,7 @@ const Login = () => {
             axios.post(URL, submitData)
             .then(res => {
                 loginProcess(res.data);
+                console.log(res.data);
                 navigate("/");
             })
             .catch(err =>{

@@ -3,18 +3,20 @@ import axios from "axios";
 import { PasswordInput, SubmitButton, TextInput } from "components/form/input";
 import { projectName } from "const/projectInfo";
 import { memo, useRef } from "react"
+import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { getHmacSHA256 } from "utils/crypto";
 
 const SocialLoginButton = ({url, label}) => {
     return (
-        <div className="w-full p-3 flex items-center justify-center mt-5 border border-gray-300 rounded-sm cursor-pointer">
+        <div className="w-full p-3 flex items-center justify-center mt-5 border border-gray-300 rounded-sm cursor-pointer" onClick={()=>{alert("미구현기능")}}>
             <img src={url} alt="social-icons" className="w-8 h-8 mr-5"/>
             <span className=" w-48 text-base text-gray-600">{label}</span>
         </div>
     )
 }
 const Login = () => {
+    const navigate = useNavigate();
     const idRef = useRef(null);
     const pwRef = useRef(null);
     
@@ -53,6 +55,7 @@ const Login = () => {
             .then(res => {
                 //loginProcess(res.data);
                 console.log(res.data);
+                navigate("/");
             })
             .catch(err =>{
                 console.log("catch",err);

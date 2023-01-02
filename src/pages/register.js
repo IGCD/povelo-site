@@ -33,7 +33,6 @@ const Register = () => {
             }
         }
     }
-
     const CheckTextForm = ({text}) => {
         return (<div className=" text-red-400 text-sm mt-1">{text}</div>)
     }
@@ -41,8 +40,26 @@ const Register = () => {
     const registerHandler = (e) => {
         e.preventDefault();
         if(idRef.current && pwRef.current && numberRef.current) {
-            if(idStatus && pwStatus && idRef.current.value !== "" && pwRef.current.value !== "") {
-                //axios.post(process.env.REACT_APP_API_URL + "register")
+
+            if(idStatus && 
+                pwStatus && 
+                idRef.current.value !== "" && 
+                pwRef.current.value !== "" &&
+                numberRef.current.value !== "") 
+                {
+
+                const formatData = {
+                    email : idRef.current.value,
+                    password : pwRef.current.value,
+                    phoneNumber : numberRef.current.value,
+                }
+                //axios.post(process.env.REACT_APP_API_URL + "regist", formatData)
+                //.then(res => {
+                //     console.log(res.data);
+                // })
+                // .catch(err => {
+                //     console.log(err);
+                // })
             }
             else {
                 alert("포멧 안맞으니까 고치세요");
@@ -64,7 +81,7 @@ const Register = () => {
             <PasswordInput ref={pwRef} label="비밀번호" id="reg-pw" checkFunc={pwCheckHandler}/>
             {!pwStatus ? <CheckTextForm text={"비밀번호는 9글자 이상이어야 하며 한 개의 대문자와 특수문자(!, @, #)를 포함해야합니다."}/> : null}
 
-            <TextInput ref={numberRef} label="연락처" id="call-number"/>
+            <TextInput ref={numberRef} label="연락처" id="call-number" />
             <SubmitButton label={"회원가입"}/>
             </form>
         </div>

@@ -18,13 +18,21 @@ export const PostItem = ({url}) => {
 
     return (
         <div className=" mr-3 last:mr-0">
-            <div className="w-80 h-80">
-                <Image classStyle="w-full h-full object-cover rounded-lg" src={url + getParametersForUnsplash(640, 640, 50, "jpg")} lazySrc={url + getParametersForUnsplash(30, 30, 1, "jpg")} />
+            <div className="w-80 max-md:w-full">
+                <Image 
+                    classStyle="w-full h-full object-cover rounded-lg" 
+                    src={url + getParametersForUnsplash(640, 640, 50, "jpg")} 
+                    lazySrc={url + getParametersForUnsplash(320, 320, 1, "jpg")} 
+                />
             </div>
             <div className="mt-5 flex justify-between items-center pl-2 pr-2">
                 <div className="flex items-center">
-                    <Image classStyle={"w-5 h-5 mr-2 rounded-full"} src={url + getParametersForUnsplash(40, 40, 10, "jpeg")} lazySrc={url + getParametersForUnsplash(30, 30, 1, "jpg")}/>
-                    <span className={`${descriptionStyle} hover:font-semibold hover:text-gray-600`}>Lorem Ipsum</span>
+                    <Image 
+                        classStyle={"w-5 h-5 mr-2 rounded-full"} 
+                        src={url + getParametersForUnsplash(40, 40, 10, "jpeg")} 
+                        lazySrc={url + getParametersForUnsplash(30, 30, 1, "jpg")}
+                    />
+                    <span className={`${descriptionStyle} hover:font-semibold hover:text-gray-600 whitespace-nowrap mr-10`}>Lorem Ipsum</span>
                 </div>
                 <ul className={`${descriptionStyle} flex space-x-2`}>
                     <li className="flex items-center"><BsEye className="mr-1"/>21.7K</li>
@@ -101,7 +109,7 @@ export const PostList = () => {
         <>
             {direction !== 0 ? <div className='absolute w-12 h-12 top-36 -left-6 bg-gray-100 border-gray-900 flex justify-center items-center rounded-full shadow-xl'><IoIosArrowBack/></div> : <></>}
             <div ref={(node) => {scrollRef.current = node}} className="w-full overflow-y-hidden scrollbar-hide shadow-inner">
-                <div className="flex">{tmpList.slice(0, 10).map((data, index) => <PostItem key={index} url={tmpImageList[data]}/>)}</div>
+                <div className="flex relative">{tmpList.slice(0, 10).map((data, index) => <PostItem key={index} url={tmpImageList[data]}/>)}</div>
             </div>
             {direction !== 2 ? <div className='absolute w-12 h-12 top-36 -right-6 bg-gray-100 border-gray-900 flex justify-center items-center rounded-full shadow-xl'><IoIosArrowForward/></div> : <></>}
         </>

@@ -1,3 +1,4 @@
+import { loginProcess } from "api/loginAPI";
 import axios from "axios";
 import { PasswordInput, SubmitButton, TextInput } from "components/form/input";
 import { projectName } from "const/projectInfo";
@@ -40,18 +41,21 @@ const Login = () => {
 
         if(idRef.current && pwRef.current) {
             const URL = process.env.REACT_APP_API_URL + "login";
-            
+            console.log(URL);
             const submitData = {
-                userId : idRef.current.value,
-                userPw : getHmacSHA256(pwRef.current.value),
+                email : idRef.current.value,
+                password : pwRef.current.value,
             }
             console.log(submitData);
+
+            //axios.get(process.env.REACT_APP_API_URL + "login")
             axios.post(URL, submitData)
             .then(res => {
+                //loginProcess(res.data);
                 console.log(res.data);
             })
             .catch(err =>{
-                console.log(err);
+                console.log("catch",err);
             })
         }
     }
@@ -65,7 +69,7 @@ const Login = () => {
             </form>
             <div className=" text-sm text-gray-500 mt-4">
                 아직 계정이 없으신가요? 
-                <Link className="ml-2 text-blue-500 hover:text-blue-400 font-semibold" to="/login">
+                <Link className="ml-2 text-blue-500 hover:text-blue-400 font-semibold" to="/register">
                     회원가입하기
                 </Link>
             </div>

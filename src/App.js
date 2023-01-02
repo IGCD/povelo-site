@@ -5,6 +5,7 @@ import { NotFound } from 'pages/notfound';
 import Post from 'pages/post';
 import Login from 'pages/login';
 import 'styles/globals.css';
+import Register from 'pages/register';
 
 function App() {
 
@@ -15,6 +16,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Main />}></Route>
           <Route path="/login" element={<Login />}></Route>
+          <Route path="/register" element={<Register />}></Route>
           <Route path="/post" element={<Post />}></Route>
           <Route path="*" element={<NotFound/>}></Route>
         </Routes>

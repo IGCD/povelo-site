@@ -20,7 +20,7 @@ export const Navigation = ({auth}) => {
                 </li> */}
                 {auth ?
                         <>
-                            <li className="ml-10 whitespace-nowrap cursor-pointer"><Link to="/">마이페이지</Link></li>
+                            <li className="ml-10 whitespace-nowrap cursor-pointer"><Link to="/mypage">마이페이지</Link></li>
                             <li className="ml-10 whitespace-nowrap cursor-pointer" onClick={()=>{setModal(prev => !prev)}}>글쓰기</li>
                             <li className="ml-10 whitespace-nowrap cursor-pointer" onClick={()=>{logoutProcess(context, navigate)}}>로그아웃</li>
                         </> :

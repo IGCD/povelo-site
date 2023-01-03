@@ -8,6 +8,7 @@ import 'styles/globals.css';
 import Register from 'pages/register';
 import { createContext, useEffect, useState } from 'react';
 import { storageName } from 'api/loginAPI';
+import Mypage from 'pages/mypage';
 
 
 export const LoginContext = createContext({login:false, setLogin:()=>{}})
@@ -23,6 +24,8 @@ function App() {
             <Route path="/" element={<Main />}></Route>
             <Route path="/login" element={<Login />}></Route>
             <Route path="/register" element={<Register />}></Route>
+            <Route path="/mypage" element={<Mypage />}></Route>
+            <Route path="/board/:id" element={<Register />}></Route>
             <Route path="/post" element={<Post />}></Route>
             <Route path="*" element={<NotFound />}></Route>
           </Routes>

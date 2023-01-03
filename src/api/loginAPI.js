@@ -11,7 +11,7 @@ export const loginProcess = (response, context) => {
     const login = isLogin();
     if(!login) {
         const token = response?.access_token;
-        setCookie(process.env.REACT_APP_LOGIN_COOKIE, token, {httpOnly : true}); //`Bearer ${response?.access_token}`
+        setCookie(process.env.REACT_APP_LOGIN_COOKIE, token); //, {httpOnly : true}
         const data = jwtDecode(token);
         localStorage.setItem(storageName, data.email);
         console.log(data);

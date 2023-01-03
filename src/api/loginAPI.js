@@ -1,16 +1,21 @@
-import axios from "axios";
+import jwtDecode from "jwt-decode";
+import { removeCookie, setCookie } from "utils/cookie";
+
+export const storageName = "login-email";
 
 export const isLogin = () => {
-    const login = axios.defaults.headers.common["Authorization"];
+    const login = localStorage.getItem(storageName);
     return login ? true : false;
 }
-
 export const loginProcess = (response, context) => {
     const login = isLogin();
     if(!login) {
-        axios.defaults.headers.common["Authorization"] = `Bearer ${response?.access_token}`;
+        const token = response?.access_token;
+        setCookie(process.env.REACT_APP_LOGIN_COOKIE, token, {httpOnly : true}); //`Bearer ${response?.access_token}`
+        const data = jwtDecode(token);
+        localStorage.setItem(storageName, data.email);
+        console.log(data);
         context.setLogin(true);
-        //sessionStorage.setItem(process.env.REACT_APP_LOGIN_STORAGE, response?.access_token);
     }
     else {
         alert("Already Login !");
@@ -19,7 +24,10 @@ export const loginProcess = (response, context) => {
 
 
 export const logoutProcess = (context, navigate) => {
-    axios.defaults.headers.common["Authorization"] = undefined;
-    context.setLogin(false);
+    if(isLogin()){
+        localStorage.removeItem(storageName);
+        removeCookie(process.env.REACT_APP_LOGIN_COOKIE);
+        context.setLogin(false);
+    }
     navigate("/");
 }

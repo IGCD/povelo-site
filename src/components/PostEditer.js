@@ -1,5 +1,5 @@
 import axios from "axios";
-import { forwardRef, useMemo, useState } from "react";
+import { forwardRef, useEffect, useMemo, useState } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { isEmpty } from "utils/isEmpty";
@@ -11,16 +11,20 @@ import ImageResize from "quill-image-resize-module-react";
 
 Quill.register('modules/ImageResize', ImageResize);
 Quill.register('modules/VideoResize', VideoResize);
+
+
 export const PostEditer = forwardRef((props, ref) => {
     const [contents, setContents] = useState("");
 
-    const imageHandler = useMemo(() => {
+    const imageHandler = () => {
+        console.log("Action Image Handler")
         const input = document.createElement("input");
         const formData = new FormData();
         let url = "";
 
         input.setAttribute("type", "file");
         input.setAttribute("accept", "image/*");
+        input.click();
 
         input.onchange = async () => {
             const file = input.files;
@@ -39,21 +43,21 @@ export const PostEditer = forwardRef((props, ref) => {
                         quill?.setSelection(range, 1);
                         quill?.clipboard.dangerouslyPasteHTML(range, `<img src=${url} alt="이미지 태그가 삽입됩니다." />`);
                     }
-
                     return { ...res, success: true };
                 } catch (error) {
                     const err = error;
+                    console.log(err);
                     return { ...err.response, success: false };
                 }
             }
         };
-    }, [ref]);
+    };
 
     const modules = useMemo(() => ({
         ImageResize: {
-            parchment: Quill.import('parchment')
+            parchment: Quill.import('parchment'),
+            modules: ['Resize', 'DisplaySize', "Toolbar"]
         },
-
         VideoResize: {
             parchment: Quill.import('parchment'),
             modules: ["Resize", "DisplaySize", "Toolbar"]
@@ -75,9 +79,9 @@ export const PostEditer = forwardRef((props, ref) => {
                 image: imageHandler,
             },
         },
-    }), [imageHandler]);
+    }), []);
     return (
-        <div className="post-editer h-screen" style={{ height: "calc(100vh - 400px)" }}>
+        <div className="post-editer">
             <ReactQuill
                 className="w-full h-full"
                 ref={(element) => {

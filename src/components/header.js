@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 import { Navigation } from "./navigation";
 
 export const Header = () => {
-    
     const context = useContext(LoginContext);
 
     return (

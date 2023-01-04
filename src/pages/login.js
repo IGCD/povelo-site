@@ -52,7 +52,7 @@ const Login = () => {
                     navigate("/");
                 })
                 .catch(err =>{
-                    alert("Error");
+                    alert(err.response.data);
                     console.log(err);
                 })
         }

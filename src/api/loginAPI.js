@@ -1,17 +1,13 @@
-import jwtDecode from "jwt-decode";
-import { removeCookie } from "utils/cookie";
+import { getCookie, removeCookie } from "utils/cookie";
 
 
 export const isLogin = () => {
-    const login = true;
+    const login = getCookie("access_token");
     return login ? true : false;
 }
 export const loginProcess = (response, context) => {
     const login = isLogin();
-    if(!login) {
-        const token = response?.access_token;
-        context.setLogin(true);
-    }
+    if(!login) { context.setLogin(true) }
     else {
         alert("Already Login !");
     }

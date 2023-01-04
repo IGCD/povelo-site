@@ -46,11 +46,11 @@ const Login = () => {
             const URL = process.env.REACT_APP_API_BASE_URL + "auth/login";
             const submitData = { email : idRef.current.value, password : pwRef.current.value }
 
-            axios.post(URL, submitData)
+            axios.post(URL, submitData, { headers:{ withCredentials: true }})
                 .then(res => {
                     console.log(res.data);
-                    //loginProcess(res.data, context);
-                    //navigate("/");
+                    alert("login Success");
+                    navigate("/");
                 })
                 .catch(err =>{
                     console.log(err);

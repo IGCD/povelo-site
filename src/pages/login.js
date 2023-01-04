@@ -42,7 +42,7 @@ const Login = () => {
         e.preventDefault();
 
         if(idRef.current && pwRef.current) {
-            const URL = process.env.REACT_APP_API_BASE_URL + "auth/login";
+            const URL = "/api/auth/login";
             const submitData = { email : idRef.current.value, password : pwRef.current.value }
 
             axios.post(URL, submitData)

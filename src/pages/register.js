@@ -55,7 +55,7 @@ const Register = () => {
                     password : pwRef.current.value,
                     phoneNumber : numberRef.current.value.replaceAll("-", ""),
                 }
-                axios.post(process.env.REACT_APP_API_BASE_URL + "auth/regist", formatData)
+                axios.post("/api/auth/regist", formatData)
                 .then(res => {
                     alert("회원가입이 완료되었습니다.");
                     console.log(res);

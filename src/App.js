@@ -16,7 +16,7 @@ function App() {
   const [login, setLogin] = useState(false);
 
   useEffect(()=>{
-    const URL = process.env.REACT_APP_API_BASE_URL + "users/1";
+    const URL = "/api/users/1";
     axios.get(URL)
       .then(res => {
         setLogin(true);

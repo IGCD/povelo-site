@@ -6,12 +6,25 @@ import Post from 'pages/post';
 import Login from 'pages/login';
 import 'styles/globals.css';
 import Register from 'pages/register';
-import { createContext, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 import Mypage from 'pages/mypage';
+import axios from 'axios';
+
 
 export const LoginContext = createContext({login:false, setLogin:()=>{}})
 function App() {
   const [login, setLogin] = useState(false ? true : false);
+
+  useEffect(()=>{
+    const URL = process.env.REACT_APP_API_BASE_URL + "users/1";
+    axios.get(URL)
+      .then(res => {
+        console.log(res.data);
+      })
+      .catch(err => {
+        console.log(err);
+      })
+  }, [login])
 
   return (
     <LoginContext.Provider value={{login:login, setLogin:setLogin}}>

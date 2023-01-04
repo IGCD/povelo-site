@@ -6,14 +6,13 @@ import Post from 'pages/post';
 import Login from 'pages/login';
 import 'styles/globals.css';
 import Register from 'pages/register';
-import { createContext, useEffect, useState } from 'react';
-import { storageName } from 'api/loginAPI';
+import { createContext, useState } from 'react';
 import Mypage from 'pages/mypage';
 
 
 export const LoginContext = createContext({login:false, setLogin:()=>{}})
 function App() {
-  const [login, setLogin] = useState(localStorage.getItem(storageName) ? true : false);
+  const [login, setLogin] = useState(false ? true : false);
 
   return (
     <LoginContext.Provider value={{login:login, setLogin:setLogin}}>

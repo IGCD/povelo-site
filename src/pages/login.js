@@ -44,20 +44,17 @@ const Login = () => {
 
         if(idRef.current && pwRef.current) {
             const URL = process.env.REACT_APP_API_BASE_URL + "auth/login";
-            console.log(URL);
-            const submitData = {
-                email : idRef.current.value,
-                password : pwRef.current.value,
-            }
+            const submitData = { email : idRef.current.value, password : pwRef.current.value }
 
             axios.post(URL, submitData)
-            .then(res => {
-                loginProcess(res.data, context);
-                navigate("/");
-            })
-            .catch(err =>{
-                console.log(err);
-            })
+                .then(res => {
+                    console.log(res.data);
+                    //loginProcess(res.data, context);
+                    //navigate("/");
+                })
+                .catch(err =>{
+                    console.log(err);
+                })
         }
     }
     return (

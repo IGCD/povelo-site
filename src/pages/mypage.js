@@ -11,7 +11,7 @@ const MyPage = () => {
     const wrapperStyle = "relative mb-10";
     const Title = ({title}) => <h2 className=" text-lg font-semibold mb-5">{title}</h2>;
     const Skill = ({text}) => <div className=" text-sm px-3 py-1 bg-gray-300 rounded-full">{text}</div>;
-
+    const Project = ({data}) => <div></div>;
     return (
         <div className="container">
             <div className={wrapperStyle}>

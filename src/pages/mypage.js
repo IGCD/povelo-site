@@ -4,10 +4,6 @@ import { memo, useEffect, useState } from "react"
 const MyPage = () => {
     const [postView, setPostView] = useState(0);
 
-    useEffect(()=>{
-        axios.get(process.env.REACT_APP_API_BASE_URL + "dd", {})
-    }, [])
-
     const wrapperStyle = "relative mb-10";
     const Title = ({title}) => <h2 className=" text-lg font-semibold mb-5">{title}</h2>;
     const Skill = ({text}) => <div className=" text-sm px-3 py-1 bg-gray-300 rounded-full">{text}</div>;

@@ -30,7 +30,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "export PORT=4000 HTTPS=true && react-scripts start",
+    "start": "export PORT=4000 && react-scripts start",
     "build": "export PORT=4000 && react-scripts build",
     "test": "export PORT=4000 && react-scripts test",
     "eject": "export PORT=4000 && react-scripts eject"

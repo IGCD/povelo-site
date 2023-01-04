@@ -1,4 +1,3 @@
-import { loginProcess } from "api/loginAPI";
 import { LoginContext } from "App";
 import axios from "axios";
 import { PasswordInput, SubmitButton, TextInput } from "components/form/input";
@@ -48,8 +47,8 @@ const Login = () => {
 
             axios.post(URL, submitData)
                 .then(res => {
-                    console.log(res.data);
-                    alert("login Success");
+                    console.log("Login Success");
+                    context.setLogin(true);
                     navigate("/");
                 })
                 .catch(err =>{

@@ -18,7 +18,6 @@ function App() {
 
   useEffect(()=>{
     const URL = process.env.REACT_APP_API_BASE_URL + "users/1";
-    setCookie("accessToken", "tlqkf");
     axios.get(URL ,{headers:{withCredentials : true}})
       .then(res => {
         console.log(res.data);

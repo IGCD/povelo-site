@@ -37,17 +37,29 @@ const MyPage = () => {
             <div className={wrapperStyle}>
                 <Title title={"게시물"}/>
                 <div className="absolute top-0 right-0 text-gray-500 text-sm cursor-pointer">수정하기</div>
-                <div className="w-full bg-gray-200">
+                <div className="w-full">
                     <div className="flex">
                         <span className={`w-full text-sm text-center p-2 ${postView === 0 ? "bg-blue-300 text-white" : "text-gray-600"}`} onClick={()=>{setPostView(0)}}>PROJECTS</span>
                         <span className={`w-full text-sm text-center p-2 ${postView === 1 ? "bg-blue-300" : "text-gray-600"}`} onClick={()=>{setPostView(1)}}>POSTS</span>
                     </div>
                     <div className="grid grid-cols-3">
-                        <div className="border border-black">1</div>
-                        <div className="border border-black">1</div>
-                        <div className="border border-black">1</div>
-                        <div className="border border-black">1</div>
-                        <div className="border border-black">1</div>
+                        {
+                            postView === 0 ?
+                            <>
+                                <div className="bg-gray-400 bg-opacity-30 border border-gray-400 border-opacity-30 aspect-square -mb-[1px] -ml-[1px]">1</div>
+                                <div className="bg-gray-300 bg-opacity-30 border border-gray-400 border-opacity-30 aspect-square -mb-[1px] -ml-[1px]">2</div>
+                                <div className="bg-gray-400 bg-opacity-30 border border-gray-400 border-opacity-30 aspect-square -mb-[1px] -ml-[1px]">3</div>
+                                <div className="bg-gray-300 bg-opacity-30 border border-gray-400 border-opacity-30 aspect-square -mb-[1px] -ml-[1px]">4</div>
+                                <div className="bg-gray-400 bg-opacity-30 border border-gray-400 border-opacity-30 aspect-square -mb-[1px] -ml-[1px]">5</div>
+                                <div className="bg-gray-300 bg-opacity-30 border border-gray-400 border-opacity-30 aspect-square -mb-[1px] -ml-[1px]">6</div>
+                                <div className="bg-gray-400 bg-opacity-30 border border-gray-400 border-opacity-30 aspect-square -mb-[1px] -ml-[1px]">7</div>
+                            </> :
+                            <>
+                                <div className="bg-gray-400 bg-opacity-30 border border-gray-400 border-opacity-30 aspect-square -mb-[1px] -ml-[1px]">1</div>
+                                <div className="bg-gray-300 bg-opacity-30 border border-gray-400 border-opacity-30 aspect-square -mb-[1px] -ml-[1px]">2</div>
+                                <div className="bg-gray-400 bg-opacity-30 border border-gray-400 border-opacity-30 aspect-square -mb-[1px] -ml-[1px]">3</div>
+                            </>
+                        }
                     </div>
                 </div>
             </div>

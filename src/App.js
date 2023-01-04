@@ -18,7 +18,7 @@ function App() {
 
   useEffect(()=>{
     const URL = process.env.REACT_APP_API_BASE_URL + "users/1";
-    axios.get(URL ,{headers:{withCredentials : true}})
+    axios.get(URL)
       .then(res => {
         console.log(res.data);
       })

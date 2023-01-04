@@ -13,20 +13,20 @@ export const Navigation = ({auth}) => {
     return (
         <nav>
             {modal ? <SelectPostModal setModal={setModal}/> : <></>}
-            <ul className="flex items-center"> 
+            <ul className="flex items-center gap-5"> 
                 {/* <li className={`searchForm flex items-center p-1 rounded-full bg-gray-200 pr-3 pl-2.5`}>
                     <FiSearch/>
                     <input type="text" className={`searchForm inline-block h-2 m-1 bg-transparent border-0 w-10`}/>
                 </li> */}
                 {auth ?
                         <>
-                            <li className="ml-10 whitespace-nowrap cursor-pointer"><Link to="/mypage">마이페이지</Link></li>
-                            <li className="ml-10 whitespace-nowrap cursor-pointer" onClick={()=>{setModal(prev => !prev)}}>글쓰기</li>
-                            <li className="ml-10 whitespace-nowrap cursor-pointer" onClick={()=>{logoutProcess(context, navigate)}}>로그아웃</li>
+                            <li className="whitespace-nowrap cursor-pointer"><Link to="/mypage">마이페이지</Link></li>
+                            <li className="whitespace-nowrap cursor-pointer" onClick={()=>{setModal(prev => !prev)}}>글쓰기</li>
+                            <li className="whitespace-nowrap cursor-pointer" onClick={()=>{logoutProcess(context, navigate)}}>로그아웃</li>
                         </> :
                         <>
-                            <li className="ml-10 whitespace-nowrap"><Link to="/login">로그인</Link></li>
-                            <li className="ml-10 whitespace-nowrap"><Link to="/register">회원가입</Link></li>
+                            <li className="whitespace-nowrap"><Link to="/login">로그인</Link></li>
+                            <li className="whitespace-nowrap"><Link to="/register">회원가입</Link></li>
                         </>
                 }
                 

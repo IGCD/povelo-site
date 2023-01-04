@@ -44,6 +44,7 @@ const Login = () => {
 
         if(idRef.current && pwRef.current) {
             const URL = process.env.REACT_APP_API_BASE_URL + "auth/login";
+            console.log(URL);
             const submitData = {
                 email : idRef.current.value,
                 password : pwRef.current.value,
@@ -55,6 +56,7 @@ const Login = () => {
                 navigate("/");
             })
             .catch(err =>{
+                console.log(err);
             })
         }
     }

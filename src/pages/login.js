@@ -47,15 +47,17 @@ const Login = () => {
 
             axios.post(URL, submitData)
                 .then(res => {
-                    console.log("Login Success");
+                    alert("Login Success");
                     context.setLogin(true);
                     navigate("/");
                 })
                 .catch(err =>{
+                    alert("Error");
                     console.log(err);
                 })
         }
     }
+
     return (
         <div className="container max-w-xl">
             <h2 className=" text-center text-4xl text-gray-700 font-bold m-10">{projectName}</h2>

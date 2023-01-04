@@ -6,8 +6,9 @@ import Post from 'pages/post';
 import Login from 'pages/login';
 import 'styles/globals.css';
 import Register from 'pages/register';
-import { createContext, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 import Mypage from 'pages/mypage';
+import axios from 'axios';
 
 
 export const LoginContext = createContext({login:false, setLogin:()=>{}})
@@ -24,6 +25,7 @@ function App() {
         setLogin(false);
       })
   }, [login])
+
   return (
     <LoginContext.Provider value={{login:login, setLogin:setLogin}}>
       <div className="App">

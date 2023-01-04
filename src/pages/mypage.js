@@ -1,5 +1,4 @@
-import axios from "axios";
-import { memo, useEffect, useState } from "react"
+import { memo, useState } from "react"
 
 const MyPage = () => {
     const [postView, setPostView] = useState(0);
@@ -40,8 +39,8 @@ const MyPage = () => {
                 <div className="absolute top-0 right-0 text-gray-500 text-sm cursor-pointer">수정하기</div>
                 <div className="w-full bg-gray-200">
                     <div className="flex">
-                        <span className={`w-full text-sm text-center p-2 ${postView == 0 ? "bg-blue-300 text-white" : "text-gray-600"}`} onClick={()=>{setPostView(0)}}>PROJECTS</span>
-                        <span className={`w-full text-sm text-center p-2 ${postView == 1 ? "bg-blue-300" : "text-gray-600"}`} onClick={()=>{setPostView(1)}}>POSTS</span>
+                        <span className={`w-full text-sm text-center p-2 ${postView === 0 ? "bg-blue-300 text-white" : "text-gray-600"}`} onClick={()=>{setPostView(0)}}>PROJECTS</span>
+                        <span className={`w-full text-sm text-center p-2 ${postView === 1 ? "bg-blue-300" : "text-gray-600"}`} onClick={()=>{setPostView(1)}}>POSTS</span>
                     </div>
                     <div className="grid grid-cols-3">
                         <div className="border border-black">1</div>

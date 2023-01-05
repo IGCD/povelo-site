@@ -11,23 +11,25 @@ import Mypage from 'pages/mypage';
 import axios from 'axios';
 
 
-export const LoginContext = createContext({login:false, setLogin:()=>{}})
+export const LoginContext = createContext({login:-1, setLogin:()=>{}})
 function App() {
   const [login, setLogin] = useState(-1);
 
-  useEffect(()=>{
+  useEffect(() => {
     if(login > -1){
       const URL = `/api/users/${login}`;
       console.log(URL);
-      axios.get(URL)
-        .then(res => {
-          console.log(res.data);
-          setLogin(true);
+      const auth = async () => {
+        await axios.get(URL)
+        .then(res => { 
+          return;
         })
         .catch(err => {
           console.log(err);
           setLogin(-1);
         })
+      }
+      auth();
     }
   }, [login])
 

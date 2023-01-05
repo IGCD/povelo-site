@@ -18,7 +18,7 @@ export const Navigation = ({auth}) => {
                     <FiSearch/>
                     <input type="text" className={`searchForm inline-block h-2 m-1 bg-transparent border-0 w-10`}/>
                 </li> */}
-                {auth ?
+                {auth > -1 ?
                         <>
                             <li className="whitespace-nowrap cursor-pointer"><Link to="/mypage">마이페이지</Link></li>
                             <li className="whitespace-nowrap cursor-pointer" onClick={()=>{setModal(prev => !prev)}}>글쓰기</li>

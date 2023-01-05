@@ -13,17 +13,22 @@ import axios from 'axios';
 
 export const LoginContext = createContext({login:false, setLogin:()=>{}})
 function App() {
-  const [login, setLogin] = useState(false);
+  const [login, setLogin] = useState(-1);
 
   useEffect(()=>{
-    const URL = "/api/users/1";
-    axios.get(URL)
-      .then(res => {
-        setLogin(true);
-      })
-      .catch(err => {
-        setLogin(false);
-      })
+    if(login > -1){
+      const URL = `/api/users/${login}`;
+      console.log(URL);
+      axios.get(URL)
+        .then(res => {
+          console.log(res.data);
+          setLogin(true);
+        })
+        .catch(err => {
+          console.log(err);
+          setLogin(-1);
+        })
+    }
   }, [login])
 
   return (

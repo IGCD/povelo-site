@@ -1,7 +1,7 @@
 import { removeCookie } from "utils/cookie";
 
 export const logoutProcess = (context, navigate) => {
-    removeCookie(process.env.REACT_APP_LOGIN_COOKIE);
+    sessionStorage.removeItem("login");
     context.setLogin(-1);
     navigate("/");
 }

@@ -20,7 +20,7 @@ export const PostItem = ({url}) => {
         <div className=" mr-3 last:mr-0">
             <div className="w-80 max-md:w-auto">
                 <Image 
-                    classStyle="w-full h-full object-cover rounded-lg" 
+                    classStyle="w-full h-full object-cover rounded-[10px]" 
                     src={url + getParametersForUnsplash(640, 640, 50, "jpg")} 
                     lazySrc={url + getParametersForUnsplash(320, 320, 1, "jpg")} 
                 />

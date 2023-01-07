@@ -47,10 +47,9 @@ const Login = () => {
 
             axios.post(URL, submitData)
                 .then(res => {
-                    console.log(res.data);
+                    sessionStorage.setItem("login", res.data.id);
                     alert("Login Success");
                     context.setLogin(res.data.id);
-                    console.log(res.data.id)
                     navigate("/");
                 })
                 .catch(err =>{

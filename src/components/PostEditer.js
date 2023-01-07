@@ -1,5 +1,5 @@
 import axios from "axios";
-import { forwardRef, useEffect, useMemo, useState } from "react";
+import { forwardRef, useEffect, useMemo, useRef, useState } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { isEmpty } from "utils/isEmpty";
@@ -32,7 +32,7 @@ export const PostEditer = forwardRef((props, ref) => {
                 formData.append("image", file[0]);
 
                 try {
-                    const res = axios.get("https://reqres.in/api/users/2");
+                    const res = axios.get("/api/users/1");
 
                     //url = res.data.url;
                     url = "https://images.unsplash.com/photo-1664574654529-b60630f33fdb";

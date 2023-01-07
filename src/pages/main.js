@@ -10,19 +10,18 @@ const Main = () => {
     return (
         <div className="container">
             <TopBanner/>
-            <FullWidthLayout title={"금주의 인기 프로필"}>
+            {/* <FullWidthLayout title={"금주의 인기 프로필"}>
                 <ProfileList />
-            </FullWidthLayout>
-            <BarBanner text={"Would you like to make a advance reservation? Click me !"}/>
+            </FullWidthLayout>  */}
             <FullWidthLayout title={"최고의 개발자 포트폴리오를 발견해보세요 !"}>
                 <PostList />
             </FullWidthLayout>
             <FullWidthLayout title={"다른 개발자들의 프로젝트를 확인해보세요 !"}>
                 <PostList />
             </FullWidthLayout>
-            <FullWidthLayout title={"다양한 창작 영역의 인사이트를 한 곳에서 모아보세요."}>
+            {/* <FullWidthLayout title={"다양한 창작 영역의 인사이트를 한 곳에서 모아보세요."}>
                 <PostList />
-            </FullWidthLayout>
+            </FullWidthLayout> */}
         </div>
     )
 }

@@ -10,7 +10,7 @@ const Register = () => {
 
     const pwRef = useRef(null);
     const [pwStatus, setPwStatus] = useState(true);
-
+    const nameRef = useRef(null);
     const numberRef = useRef(null);
 
 
@@ -46,16 +46,19 @@ const Register = () => {
             if(idStatus && 
                 pwStatus && 
                 idRef.current.value !== "" && 
-                pwRef.current.value !== "" &&
+                pwRef.current.value !== "" && 
+                nameRef.current.value !== "" &&
                 numberRef.current.value !== "") 
                 {
 
                 const formatData = {
                     email : idRef.current.value,
                     password : pwRef.current.value,
+                    name : nameRef.current.value,
                     phoneNumber : numberRef.current.value.replaceAll("-", ""),
                 }
-                axios.post("/api/auth/regist", formatData)
+
+                axios.post("/api/regist", formatData)
                 .then(res => {
                     alert("회원가입이 완료되었습니다.");
                     console.log(res);
@@ -84,6 +87,8 @@ const Register = () => {
 
             <PasswordInput ref={pwRef} label="비밀번호" id="reg-pw" checkFunc={pwCheckHandler}/>
             {!pwStatus ? <CheckTextForm text={"비밀번호는 9글자 이상이어야 하며 한 개의 대문자와 특수문자(!, @, #)를 포함해야합니다."}/> : null}
+
+            <TextInput ref={nameRef} label="이름" id="reg-name" />
 
             <TextInput ref={numberRef} label="연락처" id="call-number" />
             <SubmitButton label={"회원가입"}/>
